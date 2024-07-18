@@ -26,8 +26,6 @@ app.use(cors({
   origin: process.env.CLIENT_URL, // Ensure no trailing slash
 }));
 
-app.options('*', cors());
-
 async function getUserDataFromRequest(req) {
   return new Promise((resolve, reject) => {
     const token = req.cookies?.token;
@@ -144,7 +142,6 @@ wss.on('connection', (connection, req) => {
     clearTimeout(connection.deathTimer);
   });
 
-  // read username and id form the cookie for this connection
   const cookies = req.headers.cookie;
   if (cookies) {
     const tokenCookieString = cookies.split(';').find(str => str.startsWith('token='));
