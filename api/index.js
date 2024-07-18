@@ -11,7 +11,7 @@ const ws = require('ws');
 const fs = require('fs');
 
 dotenv.config();
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
